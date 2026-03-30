@@ -15,6 +15,7 @@ services:
     environment:
       - DISPLAY=${DISPLAY:-:0}
       - QT_QPA_PLATFORM=xcb
+      - QT_XCB_NO_XI2=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./configs:/app/configs
