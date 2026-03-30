@@ -1,0 +1,2 @@
+# Saved configuration files (.json) are stored here.
+# This directory is mounted as a Docker volume so configs persist between runs.

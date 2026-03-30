@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>960</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ISM Brain Test — REST API Tester</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="leftMargin">
+     <number>12</number>
+    </property>
+    <property name="topMargin">
+     <number>12</number>
+    </property>
+    <property name="rightMargin">
+     <number>12</number>
+    </property>
+    <property name="bottomMargin">
+     <number>12</number>
+    </property>
+    <property name="spacing">
+     <number>8</number>
+    </property>
+
+    <!-- ── Configuration management ── -->
+    <item>
+     <widget class="QGroupBox" name="groupConfig">
+      <property name="title">
+       <string>Configuration</string>
+      </property>
+      <layout class="QHBoxLayout" name="configLayout">
+       <item>
+        <widget class="QLabel" name="labelConfigName">
+         <property name="text">
+          <string>Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEditConfigName">
+         <property name="placeholderText">
+          <string>configuration name</string>
+         </property>
+         <property name="minimumWidth">
+          <number>140</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelSaved">
+         <property name="text">
+          <string>Saved:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboConfigs">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumWidth">
+          <number>160</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnApplyConfig">
+         <property name="text">
+          <string>Apply</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSaveConfig">
+         <property name="text">
+          <string>Save</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnOpenFile">
+         <property name="text">
+          <string>Open File…</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSaveFile">
+         <property name="text">
+          <string>Save File…</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ── Server ── -->
+    <item>
+     <widget class="QGroupBox" name="groupServer">
+      <property name="title">
+       <string>Server</string>
+      </property>
+      <layout class="QHBoxLayout" name="serverLayout">
+       <item>
+        <widget class="QLabel" name="labelHost">
+         <property name="text">
+          <string>Host:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEditHost">
+         <property name="placeholderText">
+          <string>192.168.1.1 or hostname</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelPort">
+         <property name="text">
+          <string>Port:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEditPort">
+         <property name="text">
+          <string>8080</string>
+         </property>
+         <property name="maximumWidth">
+          <number>80</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ── Request ── -->
+    <item>
+     <widget class="QGroupBox" name="groupRequest">
+      <property name="title">
+       <string>Request</string>
+      </property>
+      <layout class="QVBoxLayout" name="requestLayout">
+       <item>
+        <layout class="QHBoxLayout" name="methodLayout">
+         <item>
+          <widget class="QLabel" name="labelMethod">
+           <property name="text">
+            <string>Method:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboMethod">
+           <item>
+            <property name="text">
+             <string>GET</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>POST</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelEndpoint">
+           <property name="text">
+            <string>Endpoint:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditEndpoint">
+           <property name="placeholderText">
+            <string>/api/endpoint</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerSend">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSend">
+           <property name="text">
+            <string>Send Request</string>
+           </property>
+           <property name="minimumWidth">
+            <number>120</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <!-- Payload box — hidden when method is GET -->
+       <item>
+        <widget class="QGroupBox" name="groupPayload">
+         <property name="title">
+          <string>Payload (JSON)</string>
+         </property>
+         <layout class="QVBoxLayout" name="payloadLayout">
+          <item>
+           <widget class="QPlainTextEdit" name="plainTextPayload">
+            <property name="placeholderText">
+             <string>{"key": "value"}</string>
+            </property>
+            <property name="minimumHeight">
+             <number>80</number>
+            </property>
+            <property name="maximumHeight">
+             <number>140</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ── Response ── -->
+    <item>
+     <widget class="QGroupBox" name="groupResponse">
+      <property name="title">
+       <string>Response</string>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="responseLayout">
+       <item>
+        <widget class="QPlainTextEdit" name="plainTextResponse">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Response will appear here…</string>
+         </property>
+         <property name="lineWrapMode">
+          <enum>QPlainTextEdit::NoWrap</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+
+  <!-- ── Menu bar ── -->
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>960</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpenFile"/>
+    <addaction name="actionSaveFile"/>
+    <addaction name="actionSaveFileAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+
+  <widget class="QStatusBar" name="statusbar"/>
+
+  <!-- ── Actions ── -->
+  <action name="actionOpenFile">
+   <property name="text">
+    <string>Open Configurations…</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSaveFile">
+   <property name="text">
+    <string>Save Configurations</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveFileAs">
+   <property name="text">
+    <string>Save Configurations As…</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

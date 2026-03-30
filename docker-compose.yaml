@@ -1,0 +1,23 @@
+# ISM Brain Test — REST API Tester
+#
+# BEFORE FIRST RUN — allow the container to connect to the host X11 server:
+#   xhost +local:docker
+#
+# Start with:
+#   docker compose up --build
+#
+# Saved configuration files are persisted in ./configs/ on the host.
+
+version: '3.8'
+
+services:
+  ism-brain-test:
+    build: .
+    container_name: ism-brain-test
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - QT_QPA_PLATFORM=xcb
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./configs:/app/configs
+    network_mode: host
