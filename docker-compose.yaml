@@ -8,8 +8,6 @@
 #
 # Saved configuration files are persisted in ./configs/ on the host.
 
-version: '3.8'
-
 services:
   ism-brain-test:
     build: .
